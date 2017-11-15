@@ -11,7 +11,7 @@
     <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login_style.css" type="text/css">--%>
     <%--<link rel="stylesheet" href="<c:url value="css/login_style.css"/>" type="text/css">--%>
     <style type="text/css">
-        <%@include file="css/login_style.css" %>
+        <%@include file="../css/login_style.css" %>
     </style>
 
     <!-- Scripts -->
@@ -32,11 +32,17 @@
 </head>
     <body>
         <div class="wrapper">
+            <h2>
+                Login
+            </h2>
             <form method="post">
-                <input placeholder="login" type="text" name="name">
-                <input placeholder="password" type="password" name="pass"><br/>
+                <input placeholder="username" type="text" name="username">
+                <input placeholder="password" type="password" name="password"><br/>
                 <input type="submit" value="Login">
             </form>
+            <p>
+                Don't have an account yet? <a href="/registration">create an account</a>
+            </p>
         </div>
     </body>
 </html>

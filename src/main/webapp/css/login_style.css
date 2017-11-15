@@ -21,3 +21,11 @@ input {
     border: solid 1px #c0c5db;
     border-radius: 4px;
 }
+
+input[type=submit] {
+    cursor: pointer;
+}
+
+/*h2 {*/
+    /*text-align: center;*/
+/*}*/
