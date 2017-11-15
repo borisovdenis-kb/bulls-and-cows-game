@@ -21,8 +21,19 @@
 }
 
 .right_container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
     width: 300px;
-    background-color: darkgreen;
+    background-color: #ffffff;
+    border-left: solid 1px rgba(204, 204, 204, 0.8);
+}
+
+.right_container span {
+    margin-top: 13px;
+    font-size: 2em;
+    text-align: center;
+    user-select: none;
 }
 
 .flex {
@@ -34,7 +45,7 @@
     margin-bottom: 5px;
 }
 
-.numeric_button {
+.numeric_button, .cancel_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,24 +56,52 @@
     border: solid 2px rgba(204, 204, 204, 0.8);
     border-radius: 50%;
     cursor: pointer;
-    transition: 0.3s ease background;
+    transition: 0.2s ease background;
+}
+
+.numeric_button:hover, .cancel_button:hover {
+    background-color: rgba(226, 226, 226, 0.8);
 }
 
 .invisible {
     cursor: default;
 }
 
-.numeric_button:hover {
-    background-color: rgba(226, 226, 226, 0.8);
+.numeric_button span, .cancel_button span {
+    font-size: 1.5em;
+    user-select: none;
 }
 
-.numeric_button span {
-    font-size: 1.5em;
+.display {
+    display: flex;
+    justify-content: center;
 }
 
 input#numeric_display {
-    width: 100%;
+    width: 65%;
     text-align: center;
     font-size: 2em;
     letter-spacing: 2px;
+    border: solid 2px rgba(204, 204, 204, 0.8);
+    border-radius: 4px;
+}
+
+/*input[placeholder] {
+    color: rgba(230, 230, 230, 1);
+}*/
+
+.check_button_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#ask_computer_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-top: 5px;*/
+    width: 50%;
+    cursor: pointer;
+    user-select: none;
 }
