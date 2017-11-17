@@ -12,7 +12,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
 
     @Column(name = "username")
     private String username;
@@ -41,5 +41,10 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("user[id=%s,username=%s]", this.id, this.username);
     }
 }

@@ -42,13 +42,13 @@
                     <%--<c:set var="gameBorder" value="border-bottom: solid 1px rgba(204, 204, 204, 0.8);"/>--%>
                 <%--</c:if>--%>
                 <div class="menu_item" style="${gameBorder}">
-                    <a>GAME</a>
+                    <a><b>GAME</b></a>
                 </div>
                 <div class="menu_item">
-                    <a>MY ATTEMPTS</a>
+                    <a><b>MY ATTEMPTS</b></a>
                 </div>
                 <div class="menu_item">
-                    <a>TOP</a>
+                    <a><b>TOP</b></a>
                 </div>
             </div>
         </div>
