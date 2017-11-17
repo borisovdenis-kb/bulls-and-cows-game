@@ -44,5 +44,12 @@
                 Don't have an account yet? <a href="/registration">create an account</a>
             </p>
         </div>
+        <%
+            String loginIsFailed = (String) request.getAttribute("loginIsFailed");
+            if (loginIsFailed != null && loginIsFailed.equals("true")) {
+                out.println("<h5 class=\"text-center alert-danger btn-lg\"> " +
+                            "Username or password is not correct. Try again.</h5 >");
+            }
+        %>
     </body>
 </html>

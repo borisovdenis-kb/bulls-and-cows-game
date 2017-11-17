@@ -6,6 +6,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
+@NamedQuery(
+    name="User.findOneByUsernameAndPassword",
+    query="SELECT u FROM User u WHERE u.username = :username and u.password = :password"
+)
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 3574701645481018325L;
@@ -14,7 +19,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")

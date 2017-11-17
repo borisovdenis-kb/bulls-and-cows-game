@@ -1,22 +1,39 @@
 package ru.intodayer.servlets.servlets;
 
 import javax.servlet.annotation.WebServlet;
+
+import ru.intodayer.servlets.entities.User;
+import ru.intodayer.servlets.services.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    private UserService userService = new UserService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("views/login.jsp").forward(req, resp);
+        req.setAttribute("loginIsFailed", req.getParameter("loginIsFailed"));
+        req.getRequestDispatcher("pages/login.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        HttpSession session = req.getSession();
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+
+        User user = userService.getUser(username, password);
+        if (user != null) {
+            session.setAttribute("user", user);
+            resp.sendRedirect("/game");
+        } else {
+            resp.sendRedirect("/login?loginIsFailed=true");
+        }
     }
 }

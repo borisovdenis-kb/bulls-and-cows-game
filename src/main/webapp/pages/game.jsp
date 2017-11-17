@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="src/main/webapp/css/game_style.css"/>
     <title>Bulls & Cows</title>
 
     <!-- Style -->
@@ -35,6 +36,7 @@
     <body>
         <div class="header">
             <div class="logo"><span>Bulls & Cows</span></div>
+            <div class="user"><span>Hello, ${username}</span></div>
         </div>
         <div class="menu_wrapper">
             <div class="menu">

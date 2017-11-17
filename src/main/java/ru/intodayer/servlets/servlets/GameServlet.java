@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -15,11 +16,10 @@ import java.io.IOException;
 public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        EntityManager entityManager = Persistence
-            .createEntityManagerFactory("bullsAndCows")
-            .createEntityManager();
-        User user = entityManager.find(User.class, 1);
-        System.out.println(user);
-        req.getRequestDispatcher("views/game.jsp").forward(req, resp);
+        HttpSession session = req.getSession();
+
+        User user = (User) session.getAttribute("user");
+        req.setAttribute("username", user.getUsername());
+        req.getRequestDispatcher("pages/game.jsp").forward(req, resp);
     }
 }
