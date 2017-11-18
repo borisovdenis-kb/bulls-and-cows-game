@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="src/main/webapp/css/game_style.css"/>
     <title>Bulls & Cows</title>
 
     <!-- Style -->
@@ -40,16 +39,13 @@
         </div>
         <div class="menu_wrapper">
             <div class="menu">
-                <%--<c:if test="true">--%>
-                    <%--<c:set var="gameBorder" value="border-bottom: solid 1px rgba(204, 204, 204, 0.8);"/>--%>
-                <%--</c:if>--%>
-                <div class="menu_item" style="${gameBorder}">
+                <div id="game" class="menu_item">
                     <a><b>GAME</b></a>
                 </div>
-                <div class="menu_item">
+                <div id="my_attempts" class="menu_item">
                     <a><b>MY ATTEMPTS</b></a>
                 </div>
-                <div class="menu_item">
+                <div id="top" class="menu_item">
                     <a><b>TOP</b></a>
                 </div>
             </div>

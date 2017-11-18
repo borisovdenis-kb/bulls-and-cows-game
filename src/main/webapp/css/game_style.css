@@ -149,8 +149,6 @@ input#numeric_display {
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
-    /*background-color: blue;*/
-    border-bottom: solid 2px rgba(49, 117, 204, 0.8);
 }
 
 .menu_item span {
