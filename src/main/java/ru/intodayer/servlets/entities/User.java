@@ -2,6 +2,7 @@ package ru.intodayer.servlets.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Entity
@@ -10,7 +11,6 @@ import java.io.Serializable;
     name="User.findOneByUsernameAndPassword",
     query="SELECT u FROM User u WHERE u.username = :username and u.password = :password"
 )
-
 public class User implements Serializable {
 
     private static final long serialVersionUID = 3574701645481018325L;
@@ -25,11 +25,21 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserAttempt> userAttempts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserRecord> userRecords;
+
     public User() {}
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getUsername() {

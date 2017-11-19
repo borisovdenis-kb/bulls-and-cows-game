@@ -6,6 +6,8 @@
     <persistence-unit name="bullsAndCows" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>ru.intodayer.servlets.entities.User</class>
+        <class>ru.intodayer.servlets.entities.UserAttempt</class>
+        <class>ru.intodayer.servlets.entities.UserRecord</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bull_and_cows_game" />
@@ -13,6 +15,9 @@
             <property name="javax.persistence.jdbc.password" value="o-code1234567" />
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bull_and_cows_game"/>
+            <property name="hibernate.connection.username" value="tmp_user"/>
+            <property name="hibernate.connection.password" value="o-code1234567"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
