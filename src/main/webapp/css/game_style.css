@@ -155,7 +155,3 @@ input#numeric_display {
     display: flex;
     justify-content: center;
 }
-
-.user {
-    right: 0;
-}
