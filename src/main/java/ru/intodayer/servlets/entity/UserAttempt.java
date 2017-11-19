@@ -11,7 +11,7 @@ public class UserAttempt implements Serializable {
     private static final long serialVersionUID = 6876119858685358829L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "attempt_amount")
@@ -51,7 +51,7 @@ public class UserAttempt implements Serializable {
     @Override
     public String toString() {
         return String.format(
-            "user_record[id=%s,avg_attempt_amount=%s,user_id=%s",
+            "user_attempt[id=%s,attempt_amount=%s,user_id=%s",
             this.id,
             this.attemptAmount,
             this.user.getId()

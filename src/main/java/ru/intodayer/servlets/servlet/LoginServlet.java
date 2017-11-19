@@ -27,10 +27,10 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        User user = userService.getUser(username, password);
+        User user = userService.getUserByUsernameAndPassword(username, password);
         if (user != null) {
             session.setAttribute("user", user);
-            resp.sendRedirect("/gameProcess");
+            resp.sendRedirect("/game");
         } else {
             resp.sendRedirect("/login?loginIsFailed=true");
         }

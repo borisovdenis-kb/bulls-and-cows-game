@@ -11,7 +11,7 @@ public class UserRecord implements Serializable {
     private static final long serialVersionUID = -159741789348463619L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "avg_attempt_amount")
