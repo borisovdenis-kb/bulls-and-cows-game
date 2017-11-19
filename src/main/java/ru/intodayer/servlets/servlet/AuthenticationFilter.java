@@ -1,7 +1,5 @@
-package ru.intodayer.servlets.servlets;
+package ru.intodayer.servlets.servlet;
 
-import ru.intodayer.servlets.entities.User;
-import ru.intodayer.servlets.services.UserService;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

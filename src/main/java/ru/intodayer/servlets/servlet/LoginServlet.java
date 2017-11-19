@@ -1,9 +1,8 @@
-package ru.intodayer.servlets.servlets;
+package ru.intodayer.servlets.servlet;
 
 import javax.servlet.annotation.WebServlet;
-
-import ru.intodayer.servlets.entities.User;
-import ru.intodayer.servlets.services.UserService;
+import ru.intodayer.servlets.entity.User;
+import ru.intodayer.servlets.service.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         User user = userService.getUser(username, password);
         if (user != null) {
             session.setAttribute("user", user);
-            resp.sendRedirect("/game");
+            resp.sendRedirect("/gameProcess");
         } else {
             resp.sendRedirect("/login?loginIsFailed=true");
         }

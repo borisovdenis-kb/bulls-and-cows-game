@@ -1,4 +1,6 @@
-package ru.intodayer.servlets.utility;
+package ru.intodayer.servlets.game;
+
+import ru.intodayer.servlets.game.exception.ValidationException;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -29,20 +31,20 @@ public class SecretNumber {
         return m.matches();
     }
 
-    public static void validateNumber(String userNumber) {
+    public static void validateNumber(String userNumber) throws ValidationException {
         if (userNumber.length() != SecretNumber.NUMBER_LENGTH) {
-            throw new IllegalArgumentException(
+            throw new ValidationException(
                 "The number must has length of 4."
             );
         }
         if (!numberNotHaveLeadingZeros(userNumber)) {
-            throw new IllegalArgumentException(
+            throw new ValidationException(
                 "The number can not have leading zeros. " +
                 "Example: 4567 - is correct; 0123 - not correct."
             );
         }
         if (!checkNumberContainsUniqueDigits(userNumber)) {
-            throw new IllegalArgumentException(
+            throw new ValidationException(
                 "The number must contain only unique digits. " +
                 "Example: 1023 - is correct; 1022 - not correct."
             );

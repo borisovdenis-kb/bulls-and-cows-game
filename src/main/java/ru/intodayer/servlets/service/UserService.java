@@ -1,7 +1,7 @@
-package ru.intodayer.servlets.services;
+package ru.intodayer.servlets.service;
 
 
-import ru.intodayer.servlets.entities.User;
+import ru.intodayer.servlets.entity.User;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ru.intodayer.servlets.servlets;
+package ru.intodayer.servlets.servlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;

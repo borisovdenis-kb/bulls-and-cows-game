@@ -1,4 +1,4 @@
-package ru.intodayer.servlets.entities;
+package ru.intodayer.servlets.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
