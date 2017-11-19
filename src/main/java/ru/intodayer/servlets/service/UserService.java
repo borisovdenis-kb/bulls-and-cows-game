@@ -14,7 +14,6 @@ public class UserService {
             .setParameter("username", username)
             .setParameter("password", password)
             .getResultList();
-        JPAUtility.close();
 
         if (res.isEmpty()) {
             return null;

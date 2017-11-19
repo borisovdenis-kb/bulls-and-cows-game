@@ -51,6 +51,7 @@ public class GameProcessServlet extends HttpServlet {
 
                     if (bullsAndCows.getBulls() == 4) {
                         updateUserAttemptAndRecord(user, gameProcess);
+                        gameProcess = null;
                         session.setAttribute("inGameState", false);
 //                        resp.setStatus(HttpServletResponse.SC_RESET_CONTENT);
                     }
@@ -65,6 +66,7 @@ public class GameProcessServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         gameProcess = new GameProcess();
+        System.out.println(gameProcess.getSecretNumber());
         session.setAttribute("inGameState", true);
     }
 
