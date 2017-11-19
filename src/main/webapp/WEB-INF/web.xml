@@ -12,6 +12,7 @@
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/game</url-pattern>
+        <url-pattern>/rating</url-pattern>
     </filter-mapping>
 
 </web-app>

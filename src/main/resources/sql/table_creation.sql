@@ -13,7 +13,7 @@ CREATE TABLE user_attempt
   FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-CREATE TABLE user_record
+CREATE TABLE user_rating
 (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   avg_attempt_amount INT,

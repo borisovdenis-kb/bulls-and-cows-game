@@ -1,12 +1,16 @@
 package ru.intodayer.servlets.entity;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Entity
-@Table(name = "user_record")
-public class UserRecord implements Serializable {
+@Table(name = "user_rating")
+@NamedQuery(
+    query="SELECT ur FROM UserRating ur",
+    name="UserRecord.getAllUserRatings"
+)
+public class UserRating implements Serializable {
 
     private static final long serialVersionUID = -159741789348463619L;
 
@@ -17,13 +21,13 @@ public class UserRecord implements Serializable {
     @Column(name = "avg_attempt_amount")
     private Integer avgAttemptAmount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public UserRecord() {}
+    public UserRating() {}
 
-    public UserRecord(Integer avgAttemptAmount, User user) {
+    public UserRating(Integer avgAttemptAmount, User user) {
         this.avgAttemptAmount = avgAttemptAmount;
         this.user = user;
     }
@@ -51,7 +55,7 @@ public class UserRecord implements Serializable {
     @Override
     public String toString() {
         return String.format(
-            "user_record[id=%s,avg_attempt_amount=%s,user_id=%s]",
+            "user_rating[id=%s,avg_attempt_amount=%s,user_id=%s]",
             this.id,
             this.avgAttemptAmount,
             this.user.getId()

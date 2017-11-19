@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
           crossorigin="anonymous">
+
     <style type="text/css">
         <%@include file="../css/game_style.css" %>
     </style>
@@ -29,8 +30,8 @@
     </script>
 
     <script><%@include file="../plugins/jquery.maskedinput.min.js" %></script>
-
     <script><%@include file="../scripts/game_script.js" %></script>
+    <script><%@include file="../scripts/menu_script.js" %></script>
 </head>
     <body>
         <div class="header">
@@ -40,13 +41,10 @@
         <div class="menu_wrapper">
             <div class="menu">
                 <div id="game" class="menu_item">
-                    <a><b>GAME</b></a>
+                    <a href="/game"><b>GAME</b></a>
                 </div>
-                <div id="my_attempts" class="menu_item">
-                    <a><b>MY ATTEMPTS</b></a>
-                </div>
-                <div id="top" class="menu_item">
-                    <a><b>TOP</b></a>
+                <div id="rating" class="menu_item">
+                    <a href="/rating"><b>RATING</b></a>
                 </div>
             </div>
         </div>
@@ -77,9 +75,6 @@
                         <div class="numeric_button invisible" style="opacity: 0"></div>
                     </div>
                     <div class="check_button_wrapper flex">
-                        <%--<div class="check_button">--%>
-                            <%--<span></span>--%>
-                        <%--</div>--%>
                         <button id="ask_computer_button" type="button" class="btn btn-sm btn-primary">
                             <span>check</span>
                         </button>
