@@ -9,4 +9,15 @@ $(document).ready(function () {
             $(this).find(".bottom_line").css({'opacity': 1});
         }
     });
+
+    // $("#logout_btn").click(function () {
+    //     console.log("TEST");
+    //     $.ajax({
+    //         url: "/logout",
+    //         type: "GET",
+    //         success: function () {
+    //             $(location).attr("href", splitedUrl.slice(0, -1).join("/") + "/logout");
+    //         }
+    //     });
+    // });
 });

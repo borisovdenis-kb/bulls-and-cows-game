@@ -49,9 +49,17 @@
     margin-left: 15px;
 }
 
-.header .logout_wrapper button {
+.header .logout_wrapper a {
     cursor: pointer;
     font-weight: bold;
+}
+
+.logout_btn_wrapper {
+    background-color: #ffffff;
+    /*border: solid 2px rgba(49, 117, 204, 0.8);*/
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .menu_wrapper {

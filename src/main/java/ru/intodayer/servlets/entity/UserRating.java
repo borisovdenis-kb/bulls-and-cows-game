@@ -9,7 +9,7 @@ import java.io.Serializable;
 @NamedQueries({
     @NamedQuery(
         name= "UserRating.getAllUserRatings",
-        query="SELECT ur FROM UserRating ur"
+        query="SELECT ur FROM UserRating ur ORDER BY ur.avgAttemptAmount ASC"
     ),
     @NamedQuery(
         name= "UserRating.getUserRatingByUser",

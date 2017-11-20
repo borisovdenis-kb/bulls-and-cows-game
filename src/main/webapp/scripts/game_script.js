@@ -46,7 +46,7 @@ function bindEventsOnKeyBoard() {
                     console.log(response.responseText);
                     $(".user_attempts").append(
                         "<h5 class='text-center alert-danger btn-sm' style='width: 100%; margin-left: 30px; margin-top: 5px'>" +
-                        response.responseText +
+                            response.responseText +
                         "</h5>"
                     );
                 }

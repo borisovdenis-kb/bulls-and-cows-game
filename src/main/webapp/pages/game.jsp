@@ -31,7 +31,11 @@
         <div class="header">
             <div class="logo"><span>Bulls & Cows</span></div>
             <div class="user"><span>Hello, ${username}</span></div>
-            <div class="logout_wrapper"><button class="logout btn-default btn btn-sm">log out</button></div>
+            <div class="logout_wrapper">
+                <div class="logout_btn_wrapper">
+                    <a href="/login" id="logout_btn">log out</a>
+                </div>
+            </div>
         </div>
         <div class="menu_wrapper">
             <div class="menu">
