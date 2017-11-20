@@ -1,9 +1,6 @@
 package ru.intodayer.servlets.servlet;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.intodayer.servlets.entity.User;
 import ru.intodayer.servlets.entity.UserAttempt;
 import ru.intodayer.servlets.game.BullsAndCows;
@@ -22,14 +19,11 @@ import java.io.IOException;
 @WebServlet("/gameProcess")
 public class GameProcessServlet extends HttpServlet {
 
-    private ObjectMapper jsonMapper;
     private UserAttemptService userAttemptService;
     private UserRatingService userRatingService;
 
     @Override
     public void init() throws ServletException {
-        jsonMapper = new ObjectMapper();
-        jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
         userAttemptService = new UserAttemptService();
         userRatingService = new UserRatingService();
     }
@@ -40,15 +34,12 @@ public class GameProcessServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         GameProcess gameProcess = (GameProcess) session.getAttribute("gameProcess");
 
-        resp.setContentType("application/javascript");
-
         if (gameProcess != null) {
             String userNumber = req.getParameter("number");
             if (userNumber != null) {
                 try {
                     BullsAndCows bullsAndCows = gameProcess.handleUserAttempt(userNumber);
                     req.setAttribute("gameProcess", gameProcess);
-                    resp.getWriter().write(jsonMapper.writeValueAsString(gameProcess));
 
                     if (bullsAndCows.getBulls() == 4) {
                         updateUserAttemptAndRecord(user, gameProcess);
@@ -58,7 +49,8 @@ public class GameProcessServlet extends HttpServlet {
                     session.setAttribute("gameProcess", gameProcess);
                     req.getRequestDispatcher("pages/userAttempts.jsp").forward(req, resp);
                 } catch (ValidationException e) {
-                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+                    resp.getWriter().write(e.getMessage());
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 }
             }
         }

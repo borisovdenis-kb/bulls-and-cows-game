@@ -29,16 +29,24 @@ function bindEventsOnKeyBoard() {
     });
 
     $("#ask_computer_button").click(function () {
-        console.log("/gameProcess?number=" + $("#numeric_display").val());
         $.ajax({
             url: "/gameProcess?number=" + $("#numeric_display").val(),
             type: "GET",
             statusCode: {
                 202: function (response) {
                     $(".left_container").fadeOut(300);
+                    $(".right_container").css({"border-left": "none"});
                     $(".user_attempts").append(
-                        "<h5 class='text-center alert-success btn-sm' style='width: 100%; margin-left: 15px'>" +
+                        "<h5 class='text-center alert-success btn-sm' style='width: 100%; margin-left: 30px; margin-top: 5px'>" +
                             "You win!!! =)" +
+                        "</h5>"
+                    );
+                },
+                400: function (response) {
+                    console.log(response.responseText);
+                    $(".user_attempts").append(
+                        "<h5 class='text-center alert-danger btn-sm' style='width: 100%; margin-left: 30px; margin-top: 5px'>" +
+                        response.responseText +
                         "</h5>"
                     );
                 }
