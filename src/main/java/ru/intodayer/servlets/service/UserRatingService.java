@@ -8,14 +8,6 @@ import java.util.List;
 
 
 public class UserRatingService extends BaseEntityService {
-//    public void save(UserRating userRating) {
-//        EntityManager entityManager = JPAUtility.getEntityManager();
-//        entityManager.getTransaction().begin();
-//        entityManager.persist(userRating);
-//        entityManager.getTransaction().commit();
-//        entityManager.close();
-//    }
-
     public List<UserRating> getAllUserRatings() {
         EntityManager entityManager = JPAUtility.getEntityManager();
         return entityManager.createNamedQuery("UserRating.getAllUserRatings").getResultList();

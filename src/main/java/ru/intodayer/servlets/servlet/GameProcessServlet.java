@@ -1,11 +1,11 @@
 package ru.intodayer.servlets.servlet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.intodayer.servlets.entity.User;
 import ru.intodayer.servlets.entity.UserAttempt;
-import ru.intodayer.servlets.entity.UserRating;
 import ru.intodayer.servlets.game.BullsAndCows;
 import ru.intodayer.servlets.game.GameProcess;
 import ru.intodayer.servlets.game.exception.ValidationException;
@@ -47,14 +47,16 @@ public class GameProcessServlet extends HttpServlet {
             if (userNumber != null) {
                 try {
                     BullsAndCows bullsAndCows = gameProcess.handleUserAttempt(userNumber);
+                    req.setAttribute("gameProcess", gameProcess);
                     resp.getWriter().write(jsonMapper.writeValueAsString(gameProcess));
 
                     if (bullsAndCows.getBulls() == 4) {
                         updateUserAttemptAndRecord(user, gameProcess);
                         gameProcess = null;
+                        resp.setStatus(HttpServletResponse.SC_ACCEPTED);
                     }
-
                     session.setAttribute("gameProcess", gameProcess);
+                    req.getRequestDispatcher("pages/userAttempts.jsp").forward(req, resp);
                 } catch (ValidationException e) {
                     resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
                 }
@@ -68,6 +70,8 @@ public class GameProcessServlet extends HttpServlet {
         GameProcess gameProcess = new GameProcess();
         System.out.println(gameProcess.getSecretNumber());
         session.setAttribute("gameProcess", gameProcess);
+
+        req.getRequestDispatcher("html/keyboard.html").forward(req, resp);
     }
 
 
@@ -76,7 +80,6 @@ public class GameProcessServlet extends HttpServlet {
             new UserAttempt(gameProcess.getUserAttempts().size(), user)
         );
         Integer avgAttemptAmount = userAttemptService.getAvgAttemptAmount(user);
-//        UserRating userRating = userRatingService.getUserRatingByUser(user);
         userRatingService.updateAvgAttemptAmount(user, avgAttemptAmount);
     }
 }

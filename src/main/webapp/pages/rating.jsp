@@ -1,7 +1,6 @@
 <%@ page import="ru.intodayer.servlets.entity.UserRating" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +12,7 @@
           crossorigin="anonymous">
 
     <style type="text/css">
-        <%@include file="../css/game_style.css" %>
+        <%@include file="../css/base_style.css" %>
     </style>
 
     <style type="text/css">
