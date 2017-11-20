@@ -1,8 +1,6 @@
 package ru.intodayer.servlets.servlet;
 
 import javax.servlet.annotation.WebServlet;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.intodayer.servlets.entity.User;
@@ -11,7 +9,6 @@ import ru.intodayer.servlets.game.BullsAndCows;
 import ru.intodayer.servlets.game.GameProcess;
 import ru.intodayer.servlets.game.exception.ValidationException;
 import ru.intodayer.servlets.service.UserAttemptService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +20,6 @@ import java.io.IOException;
 @WebServlet("/gameProcess")
 public class GameProcessServlet extends HttpServlet {
 
-    private GameProcess gameProcess;
     private ObjectMapper jsonMapper;
     private UserAttemptService userAttemptService;
 
@@ -38,23 +34,23 @@ public class GameProcessServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        Boolean inGameState = (Boolean) session.getAttribute("inGameState");
+        GameProcess gameProcess = (GameProcess) session.getAttribute("gameProcess");
 
         resp.setContentType("application/javascript");
 
-        if (inGameState != null && inGameState) {
+        if (gameProcess != null) {
             String userNumber = req.getParameter("number");
             if (userNumber != null) {
                 try {
-                    BullsAndCows bullsAndCows = this.gameProcess.handleUserAttempt(userNumber);
+                    BullsAndCows bullsAndCows = gameProcess.handleUserAttempt(userNumber);
                     resp.getWriter().write(jsonMapper.writeValueAsString(gameProcess));
 
                     if (bullsAndCows.getBulls() == 4) {
                         updateUserAttemptAndRecord(user, gameProcess);
                         gameProcess = null;
-                        session.setAttribute("inGameState", false);
-//                        resp.setStatus(HttpServletResponse.SC_RESET_CONTENT);
                     }
+
+                    session.setAttribute("gameProcess", gameProcess);
                 } catch (ValidationException e) {
                     resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
                 }
@@ -65,10 +61,11 @@ public class GameProcessServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        gameProcess = new GameProcess();
+        GameProcess gameProcess = new GameProcess();
         System.out.println(gameProcess.getSecretNumber());
-        session.setAttribute("inGameState", true);
+        session.setAttribute("gameProcess", gameProcess);
     }
+
 
     private void updateUserAttemptAndRecord(User user, GameProcess gameProcess) {
         userAttemptService.save(

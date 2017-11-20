@@ -12,6 +12,6 @@ public class UserAttemptService {
         entityManager.persist(userAttempt);
         entityManager.getTransaction().commit();
         entityManager.close();
-        JPAUtility.close();
+//        JPAUtility.close();
     }
 }
