@@ -6,10 +6,17 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user_rating")
-@NamedQuery(
-    query="SELECT ur FROM UserRating ur",
-    name="UserRecord.getAllUserRatings"
-)
+@NamedQueries({
+    @NamedQuery(
+        name= "UserRating.getAllUserRatings",
+        query="SELECT ur FROM UserRating ur"
+    ),
+    @NamedQuery(
+        name= "UserRating.getUserRatingByUser",
+        query="SELECT ur FROM UserRating ur WHERE ur.user = :user"
+    )
+})
+
 public class UserRating implements Serializable {
 
     private static final long serialVersionUID = -159741789348463619L;

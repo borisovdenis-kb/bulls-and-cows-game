@@ -6,6 +6,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user_attempt")
+@NamedQuery(
+    name = "UserAttempt.getAvgAttemptAmount",
+    query = "SELECT avg(ua.attemptAmount) FROM UserAttempt ua WHERE ua.user = :user"
+)
 public class UserAttempt implements Serializable {
 
     private static final long serialVersionUID = 6876119858685358829L;

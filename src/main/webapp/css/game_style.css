@@ -128,6 +128,29 @@ input#numeric_display {
     color: rgba(255, 255, 255, 1);
 }
 
+.header .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    height: 100%;
+    color: white;
+}
+
+.header .logout_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-right: 35px;
+    margin-left: 15px;
+}
+
+.header .logout_wrapper button {
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .menu_wrapper {
     border-bottom: solid 1px rgba(204, 204, 204, 0.8);
 }
@@ -140,6 +163,7 @@ input#numeric_display {
 }
 
 .menu_item {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,4 +178,13 @@ input#numeric_display {
 .menu_item span {
     display: flex;
     justify-content: center;
+}
+
+.menu_item .bottom_line {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -1px;
+    background-color: rgba(49, 117, 204, 0.8);
+    opacity: 0;
 }

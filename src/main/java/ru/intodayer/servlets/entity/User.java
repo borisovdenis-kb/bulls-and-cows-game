@@ -8,8 +8,8 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 @NamedQuery(
-    name="User.findOneByUsernameAndPassword",
-    query="SELECT u FROM User u WHERE u.username = :username and u.password = :password"
+    name = "User.getUserByUsernameAndPassword",
+    query = "SELECT u FROM User u WHERE u.username = :username and u.password = :password"
 )
 public class User implements Serializable {
 

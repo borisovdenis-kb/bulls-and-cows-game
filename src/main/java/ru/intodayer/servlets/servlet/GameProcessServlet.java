@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import ru.intodayer.servlets.entity.User;
 import ru.intodayer.servlets.entity.UserAttempt;
+import ru.intodayer.servlets.entity.UserRating;
 import ru.intodayer.servlets.game.BullsAndCows;
 import ru.intodayer.servlets.game.GameProcess;
 import ru.intodayer.servlets.game.exception.ValidationException;
 import ru.intodayer.servlets.service.UserAttemptService;
+import ru.intodayer.servlets.service.UserRatingService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +24,14 @@ public class GameProcessServlet extends HttpServlet {
 
     private ObjectMapper jsonMapper;
     private UserAttemptService userAttemptService;
+    private UserRatingService userRatingService;
 
     @Override
     public void init() throws ServletException {
         jsonMapper = new ObjectMapper();
         jsonMapper.enable(SerializationFeature.INDENT_OUTPUT);
         userAttemptService = new UserAttemptService();
+        userRatingService = new UserRatingService();
     }
 
     @Override
@@ -71,5 +75,8 @@ public class GameProcessServlet extends HttpServlet {
         userAttemptService.save(
             new UserAttempt(gameProcess.getUserAttempts().size(), user)
         );
+        Integer avgAttemptAmount = userAttemptService.getAvgAttemptAmount(user);
+//        UserRating userRating = userRatingService.getUserRatingByUser(user);
+        userRatingService.updateAvgAttemptAmount(user, avgAttemptAmount);
     }
 }

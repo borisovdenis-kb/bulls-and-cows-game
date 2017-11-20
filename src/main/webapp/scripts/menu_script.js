@@ -5,8 +5,8 @@ $(document).ready(function () {
 
     $(".menu_item").each(function () {
         console.log($(this).attr("id") + " " + page);
-        if ($(this).attr("id") == page) {
-            $(this).css({'border-bottom': 'solid 2px rgba(49, 117, 204, 0.8)'});
+        if ($(this).attr("id") === page) {
+            $(this).find(".bottom_line").css({'opacity': 1});
         }
     });
 });

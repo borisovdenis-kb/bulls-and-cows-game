@@ -37,14 +37,17 @@
         <div class="header">
             <div class="logo"><span>Bulls & Cows</span></div>
             <div class="user"><span>Hello, ${username}</span></div>
+            <div class="logout_wrapper"><button class="logout btn-default btn btn-sm">log out</button></div>
         </div>
         <div class="menu_wrapper">
             <div class="menu">
                 <div id="game" class="menu_item">
                     <a href="/game"><b>GAME</b></a>
+                    <div class="bottom_line"></div>
                 </div>
                 <div id="rating" class="menu_item">
                     <a href="/rating"><b>RATING</b></a>
+                    <div class="bottom_line"></div>
                 </div>
             </div>
         </div>

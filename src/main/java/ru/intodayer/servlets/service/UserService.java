@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 
-public class UserService {
+public class UserService extends BaseEntityService {
     public User getUserByUsernameAndPassword(String username, String password) {
         EntityManager entityManager = JPAUtility.getEntityManager();
 
-        List res = entityManager.createNamedQuery("User.findOneByUsernameAndPassword")
+        List res = entityManager.createNamedQuery("User.getUserByUsernameAndPassword")
             .setParameter("username", username)
             .setParameter("password", password)
             .getResultList();
