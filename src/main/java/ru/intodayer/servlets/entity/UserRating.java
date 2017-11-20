@@ -4,6 +4,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
+/**
+ * This table is not redundant,
+ * but introduced in order to avoid re-counting the user's rating
+ * every time the page /rating is uploaded.
+ **/
 @Entity
 @Table(name = "user_rating")
 @NamedQueries({

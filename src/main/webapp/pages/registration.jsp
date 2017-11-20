@@ -6,9 +6,6 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
           crossorigin="anonymous">
 
-
-    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login_style.css" type="text/css">--%>
-    <%--<link rel="stylesheet" href="<c:url value="css/login_style.css"/>" type="text/css">--%>
     <style type="text/css">
         <%@include file="../css/login_style.css" %>
     </style>
@@ -43,5 +40,13 @@
                 Already have an account? <a href="/login">login</a>
             </p>
         </div>
+        <%
+            String regIsFailed = (String) request.getAttribute("registrationIsFailed");
+            if (regIsFailed != null && regIsFailed.equals("true")) {
+                out.println("<h5 class=\"text-center alert-danger btn-lg\"> " +
+                        "User with the same username already exist.</h5 >"
+                );
+            }
+        %>
     </body>
 </html>

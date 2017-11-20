@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints=@UniqueConstraint(columnNames="username"))
 @NamedQuery(
     name = "User.getUserByUsernameAndPassword",
     query = "SELECT u FROM User u WHERE u.username = :username and u.password = :password"
@@ -19,7 +19,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username")
     private String username;
 
     @Column(name = "password")

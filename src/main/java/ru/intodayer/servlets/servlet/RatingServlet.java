@@ -1,7 +1,6 @@
 package ru.intodayer.servlets.servlet;
 
 import javax.servlet.annotation.WebServlet;
-
 import ru.intodayer.servlets.entity.User;
 import ru.intodayer.servlets.service.UserRatingService;
 import javax.servlet.ServletException;
@@ -15,7 +14,12 @@ import java.io.IOException;
 @WebServlet("/rating")
 public class RatingServlet extends HttpServlet {
 
-    private UserRatingService userRatingService = new UserRatingService();
+    private UserRatingService userRatingService;
+
+    @Override
+    public void init() throws ServletException {
+        userRatingService = new UserRatingService();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

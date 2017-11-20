@@ -20,7 +20,7 @@
             <property name="hibernate.connection.password" value="o-code1234567"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <property name="hibernate.c3p0.min_size" value="1" />
             <property name="hibernate.c3p0.max_size" value="1000" />
