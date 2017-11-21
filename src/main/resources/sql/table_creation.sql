@@ -1,3 +1,7 @@
+CREATE DATABASE bull_and_cows_game;
+
+USE bull_and_cows_game;
+
 CREATE TABLE user
 (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
