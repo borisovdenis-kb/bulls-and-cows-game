@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "user", uniqueConstraints=@UniqueConstraint(columnNames="username"))
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames="username"))
 @NamedQuery(
     name = "User.getUserByUsernameAndPassword",
     query = "SELECT u FROM User u WHERE u.username = :username and u.password = :password"

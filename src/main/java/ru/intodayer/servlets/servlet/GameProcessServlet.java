@@ -33,9 +33,9 @@ public class GameProcessServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         GameProcess gameProcess = (GameProcess) session.getAttribute("gameProcess");
+        String userNumber = req.getParameter("number");
 
         if (gameProcess != null) {
-            String userNumber = req.getParameter("number");
             if (userNumber != null) {
                 try {
                     BullsAndCows bullsAndCows = gameProcess.handleUserAttempt(userNumber);

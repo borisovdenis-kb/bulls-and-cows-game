@@ -50,7 +50,6 @@ function bindEventsOnKeyBoard() {
                     bindEventOnStartGameButton();
                 },
                 400: function (response) {
-                    console.log(response.responseText);
                     $(".user_attempts").append(
                         "<h5 class='text-center alert-danger btn-sm' style='width: 100%; margin-left: 30px; margin-top: 5px'>" +
                             response.responseText +

@@ -1,7 +1,6 @@
 package ru.intodayer.servlets.game;
 
 import ru.intodayer.servlets.game.exception.ValidationException;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

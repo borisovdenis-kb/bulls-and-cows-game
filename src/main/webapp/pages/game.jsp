@@ -17,11 +17,6 @@
         <%@include file="../css/game_style.css" %>
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous">
-    </script>
-
     <script><%@include file="../plugins/jquery-3.2.1.min.js" %></script>
     <script><%@include file="../plugins/jquery.maskedinput.min.js" %></script>
     <script><%@include file="../scripts/game_script.js" %></script>

@@ -23,7 +23,7 @@ public class AuthenticationFilter implements Filter {
             return;
         }
 
-        resp.setStatus(401);
+        resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         resp.sendRedirect("/login");
     }
 

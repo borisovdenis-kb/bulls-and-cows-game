@@ -22,9 +22,8 @@ public class UserRatingService extends BaseEntityService {
 
     public void updateAvgAttemptAmount(User user, Integer newAvg) {
         EntityManager entityManager = JPAUtility.getEntityManager();
-        /* Duplication of code is necessary because if we will get UserRating entity
-         * in any outer scope this entity will not be in persistence context.
-         * */
+        /* Duplication of code is necessary because if we will get UserRating entity */
+        /* in any outer scope this entity will not be in persistence context. */
         UserRating userRating = (UserRating) entityManager.createNamedQuery("UserRating.getUserRatingByUser")
             .setParameter("user", user)
             .getSingleResult();
