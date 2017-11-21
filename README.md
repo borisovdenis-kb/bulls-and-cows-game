@@ -1,4 +1,4 @@
-# o-code-test-task
+# bulls-and-cows-game
 ##### Author: Borisov Denis
 
 hibernate.hbm2ddl.auto = `update` Then the database and tables should be created automatically.
