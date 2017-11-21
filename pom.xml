@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.intodayer</groupId>
-    <artifactId>hello-servlets-world</artifactId>
+    <artifactId>bulls-and-cows-game</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>hello-servlets-world</name>
+    <name>bulls-and-cows-game</name>
     <url>http://maven.apache.org</url>
 
     <properties>
