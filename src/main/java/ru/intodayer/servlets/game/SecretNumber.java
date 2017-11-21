@@ -55,8 +55,9 @@ public class SecretNumber {
         Set<Integer> uniqueNumbers = new LinkedHashSet<>();
         Random random = new Random();
 
+        uniqueNumbers.add(random.nextInt((9 - 1) + 1) + 1);
         while (uniqueNumbers.size() < SecretNumber.NUMBER_LENGTH) {
-            uniqueNumbers.add(random.nextInt((9 - 1) + 1) + 1);
+            uniqueNumbers.add(random.nextInt(9));
         }
 
         StringBuilder sb = new StringBuilder();

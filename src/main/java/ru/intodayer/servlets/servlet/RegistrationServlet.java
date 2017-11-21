@@ -3,6 +3,8 @@ package ru.intodayer.servlets.servlet;
 import javax.servlet.annotation.WebServlet;
 import javax.persistence.PersistenceException;
 import ru.intodayer.servlets.entity.User;
+import ru.intodayer.servlets.entity.UserRating;
+import ru.intodayer.servlets.service.UserRatingService;
 import ru.intodayer.servlets.service.UserService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +17,12 @@ import java.io.IOException;
 public class RegistrationServlet extends HttpServlet {
 
     private UserService userService;
+    private UserRatingService userRatingService;
 
     @Override
     public void init() throws ServletException {
         userService = new UserService();
+        userRatingService = new UserRatingService();
     }
 
     @Override
@@ -32,9 +36,12 @@ public class RegistrationServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
-            userService.save(new User(username, password));
+            User newUser = new User(username, password);
+            userService.save(newUser);
+            userRatingService.save(new UserRating(null, newUser));
         } catch (PersistenceException e) {
             resp.sendRedirect("/registration?registrationIsFailed=true");
+            return;
         }
         resp.sendRedirect("/login");
     }

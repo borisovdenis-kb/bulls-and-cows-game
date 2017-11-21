@@ -18,8 +18,8 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bull_and_cows_game"/>
             <property name="hibernate.connection.username" value="tmp_user"/>
             <property name="hibernate.connection.password" value="o-code1234567"/>
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
+            <!--<property name="hibernate.show_sql" value="true" />-->
+            <!--<property name="hibernate.format_sql" value="true" />-->
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <property name="hibernate.c3p0.min_size" value="1" />

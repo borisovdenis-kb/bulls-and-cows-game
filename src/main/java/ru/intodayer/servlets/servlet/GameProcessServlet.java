@@ -60,7 +60,7 @@ public class GameProcessServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         GameProcess gameProcess = new GameProcess();
-        System.out.println(gameProcess.getSecretNumber());
+        System.out.println("Secret number: " + gameProcess.getSecretNumber());
         session.setAttribute("gameProcess", gameProcess);
 
         req.getRequestDispatcher("html/keyboard.html").forward(req, resp);
